@@ -1,0 +1,5 @@
+print("hello world")
+print("segundo print")
+print("tercer print")
+print("con backslash puedes poner comillas: \"entrecomillado\" ")
+print("lo mismo para comillas simples \' y para backslash \\, si no da error")
