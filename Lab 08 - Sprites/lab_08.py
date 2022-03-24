@@ -3,8 +3,7 @@ import random
 import arcade
 
 ESCALADO_SPRITE_NAVE = 0.6
-ESCALADO_SPRITE_MONEDA_GRANDE=0.5
-ESCALADO_SPRITE_MONEDA:PEQUENNA = 0.3
+ESCALADO_SPRITE_MONEDA = 0.3
 N_MONEDAS = 40
 ESCALADO_SPRITE_METEORITO = 0.5
 N_METEORITOS = 20
@@ -39,25 +38,6 @@ class Meteorito(arcade.Sprite):
         if self.top > SCREEN_HEIGHT:
             self.change_y *= -1
 
-class Moneda(arcade.Sprite):
-
-    def __init__(self, filename, sprite_scaling):
-
-        super().__init__(filename, sprite_scaling)
-
-        self.change_x = 0
-        self.change_y = 0
-        self.pulso_grande=True
-
-    def update(self):
-
-        # Move the coin
-
-        # La moneda toma un tamaño u otro por turnos
-        if(self.pulso_grande==True):
-            self.pulso_grande=False
-        else:
-            self.pulso_grande = True
 class MyGame(arcade.Window):
     def __init__(self):
         """ Inicializador """
@@ -100,16 +80,13 @@ class MyGame(arcade.Window):
         #Creación e inicialización de las monedas
         for i in range(N_MONEDAS):
             #Creación de la moneda
-            if(pulso_grande==True)
-                moneda = Moneda("coinGold.png", ESCALADO_SPRITE_MONEDA_GRANDE)
-            else:
-                moneda = Moneda("coinGold.png", ESCALADO_SPRITE_MONEDA_PEQUENNA)
+            moneda = arcade.Sprite("coinGold.png", ESCALADO_SPRITE_MONEDA)
 
             #Instanciación de la moneda
             moneda.center_x = random.randrange(SCREEN_WIDTH)
             moneda.center_y = random.randrange(SCREEN_HEIGHT)
-            moneda=
 
+            self.lista_monedas.append(moneda)
 
         #Creación e inicialización de los meteoritos
         for j in range(N_METEORITOS):
@@ -138,7 +115,7 @@ class MyGame(arcade.Window):
 
         self.sprite_jugador.center_x = x
         self.sprite_jugador.center_y = y
-        if(x>SCREEN_WIDTH or y>SCREEN_HEIGHT):
+        if(x>SCREEN_WIDTH and y>SCREEN_HEIGHT):
             self.mouse_fuera_ventana= True
         else:
             self.mouse_fuera_ventana= False
